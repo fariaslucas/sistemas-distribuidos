@@ -17,7 +17,6 @@ print ('Conectado com: ', endereco)
 while True:
 	msg = novoSock.recv(1024) 
 	if not msg: break 
-	print(str(msg,  encoding='utf-8'))
 	novoSock.send(msg) #envia mensagem de volta
 
 novoSock.close() 
