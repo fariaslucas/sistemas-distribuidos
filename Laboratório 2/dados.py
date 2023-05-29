@@ -1,24 +1,27 @@
 import json
 import os
 
-def carrega_dicionario():
-    '''Carrega o dicionário do disco através de um arquivo json.
+class Dados:
+    def __init__(self):
+        self.dicionario = {}
 
-    :return: O dicionário armazenado'''
+    def carrega_dicionario(self):
+        '''Carrega o dicionário do disco através de um arquivo json.
 
-    dicionario = {}
-    # junta o caminho do diretório desse arquivo com o nome do json para encontrar o arquivo
-    caminho = os.path.join(os.getcwd(), 'dicionario.json')
+        :return: O dicionário armazenado'''
 
-    if os.path.exists(caminho):
-        with open('dicionario.json', 'r') as arquivo:
-            dicionario = json.load(arquivo)
-    return dicionario
+        # junta o caminho do diretório desse arquivo com o nome do json para encontrar o arquivo
+        caminho = os.path.join(os.getcwd(), 'dicionario.json')
 
-def armazena_dicionario(dicionario):
-    '''Armazena o dicionário no disco utilizando um arquivo json.
+        if os.path.exists(caminho):
+            with open('dicionario.json', 'r') as arquivo:
+                self.dicionario = json.load(arquivo)
+        return self.dicionario
 
-    :param dicionario: o dicionário a ser armazenado'''
+    def armazena_dicionario(self, dicionario):
+        '''Armazena o dicionário no disco utilizando um arquivo json.
 
-    with open('dicionario.json', 'w') as arquivo:
-        json.dump(dicionario, arquivo)
+        :param dicionario: o dicionário a ser armazenado'''
+
+        with open('dicionario.json', 'w') as arquivo:
+            json.dump(dicionario, arquivo)
